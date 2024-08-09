@@ -1,35 +1,15 @@
 pipeline {
-    agent {
-        label 'java-agent-slave'
-    }
+    agent any 
     stages {
-        stage ('Build') {
+        stage ('Build'){
             steps {
-                echo "This is the Stage for Building MVN app"
-                // linux commands 
-                sh 'hostname -i'
+                echo "****** Entering Build BLock ********"
+                retry(3) {
+                    echo "Welcome to D4"
+                    error "Testing the retry block"
+                }
+                echo "****** After 3 retrys *******"
             }
         }
-        stage ('ScriptedStage'){
-            steps {
-                echo "********Executing Scripted Stage*******"
-                // write some custom code 
-                script {
-                    // define a variable 
-                    def course = "k8sother"
-                    if (course == "k8s") {
-                        println("Thanks for enrolling into $course")
-                    }
-                    else 
-                        println("Do learn k8s")
-                    }
-                    sleep 10 // SECONDS 
-            }
-        }
-        // stage ("Sonar") {
-        //     steps {
-        //         echo "Executing Sonar Stage"
-        //     }
-        // }
     }
 }
