@@ -1,14 +1,10 @@
-// Timeout 
 pipeline {
     agent any 
     stages {
-        stage ('TimeoutStage') {
+        stage ('Maven') {
             steps {
-                timeout(time: 5, unit: 'SECONDS') {
-                    echo "Sleeping for 60 Sec"
-                    sleep 60
-                    // manager apptroval
-                }
+                echo "***** Maven Version ******"
+                sh 'mvn --version'
             }
         }
     }
