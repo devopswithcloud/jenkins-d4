@@ -14,7 +14,7 @@ pipeline {
                 // write some custom code 
                 script {
                     // define a variable 
-                    def course = "k8s"
+                    def course = "something"
                     if (course == "k8s") {
                         println("Thanks for enrolling into $course")
                     }
