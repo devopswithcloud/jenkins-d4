@@ -1,14 +1,14 @@
+// Timeout 
 pipeline {
     agent any 
     stages {
-        stage ('Build'){
+        stage ('TimeoutStage') {
             steps {
-                echo "****** Entering Build BLock ********"
-                retry(3) {
-                    echo "Welcome to D4"
-                    error "Testing the retry block"
+                timeout(time: 5, unit: 'SECONDS') {
+                    echo "Sleeping for 60 Sec"
+                    sleep 60
+                    // manager apptroval
                 }
-                echo "****** After 3 retrys *******"
             }
         }
     }
